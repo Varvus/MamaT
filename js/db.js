@@ -10,9 +10,11 @@ document.addEventListener("DOMContentLoaded", function () {
     const btnDown = document.querySelector("#down");
     let actualValue;
     const divAccumulatedCards = document.querySelector("#accumulatedCards");
+
     //Contadores
     let accumulatedCards = 0;
 
+    //Initial
     sectionPlayGround.style.display = "none"; 
 
     //Event Listeners
@@ -43,10 +45,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
     //Up
     function up(valor){
+        check("up");
         flipCard();
     }
     //Down
     function down(valor){
+        check("down");
         flipCard();
     }
 
@@ -108,6 +112,10 @@ document.addEventListener("DOMContentLoaded", function () {
         isDeckEmpty();
 
         return actualValue;
+    }
+
+    function check(choose){
+        console.log("checking" + choose);
     }
 
     function isDeckEmpty(){
