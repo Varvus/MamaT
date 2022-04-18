@@ -1,18 +1,24 @@
 document.addEventListener("DOMContentLoaded", function () { 
 
-    const values = ["A","2","3","4","5","6","7","8","9","10","J","Q","K"];
+    const letters = ["A","2","3","4","5","6","7","8","9","10","J","Q","K"];
     const symbols = ["spade", "heart", "club", "diamond"];
+    const values  = [1,2,3,4,5,6,7,8,9,10,11,12,13];
     let deck = [];
     const sectionStart = document.querySelector("#start");
     const sectionPlayGround = document.querySelector("#playGround");
     const btnStart = document.querySelector("#btnStart");
     const btnUp = document.querySelector("#up");
     const btnDown = document.querySelector("#down");
+    let actualLetter;
     let actualValue;
     const divAccumulatedCards = document.querySelector("#accumulatedCards");
+    const divDrinkMessages = document.querySelector("#drinkMessages");
+    let checked;
+    let firstPlayer;
 
     //Contadores
     let accumulatedCards = 0;
+    let firstPlayerCount = 0;
 
     //Initial
     sectionPlayGround.style.display = "none"; 
@@ -25,15 +31,15 @@ document.addEventListener("DOMContentLoaded", function () {
     //Create Deck
     function createDeck(){
         symbols.forEach( symbol => {
-            values.forEach( value => {
-                deck = [...deck, [value, symbol]];
+            letters.forEach( (letter, i) => {
+                deck = [...deck, [letter, (i+1), symbol]];
             }); 
         }); 
         sectionPlayGround.style.display = "none";
         console.log("Deck Shuffled");
     }
 
-    //Start
+    //Start (BeginButton)
     function start(){
         createDeck();
         sectionStart.style.display = "none";
@@ -41,17 +47,22 @@ document.addEventListener("DOMContentLoaded", function () {
         btnUp.style.display = "block";
         btnDown.style.display = "block";
         flipCard(); 
+        firstPlayer      = true;
     }
 
     //Up
     function up(valor){
-        check("up");
         flipCard();
+        checked = checkCard("up", valor);
+        message(" ");
+        drinkMessage();
     }
     //Down
     function down(valor){
-        check("down");
         flipCard();
+        checked = checkCard("down", valor);
+        message(" ");
+        drinkMessage();
     }
 
     //Flip Card
@@ -67,15 +78,21 @@ document.addEventListener("DOMContentLoaded", function () {
         //Accumulated Cards Counter
         accumulatedCards += 1;
         divAccumulatedCards.innerHTML = accumulatedCards;
+
+        firstPlayerCount += 1;
+        console.log(firstPlayerCount);
                     
         //Random
         rnd = Math.ceil(Math.random() * (max - min) + min) - 1;
 
+        //Actual Letter
+        actualLetter = deck[rnd][0];
+
         //Actual Value
-        actualValue = deck[rnd][0];
+        actualValue = deck[rnd][1];
 
         //Actual Symbol
-        switch (deck[rnd][1]){
+        switch (deck[rnd][2]){
             case "spade":
                 actualSymbol = '♤';
                 break; 
@@ -99,11 +116,9 @@ document.addEventListener("DOMContentLoaded", function () {
             actualColor = "Red";
         }
 
-        //Llena div
-        actualCard.innerHTML = actualValue + "&nbsp;" + actualSymbol;
+        //Llena div de carta Actual
+        actualCard.innerHTML = actualLetter + "&nbsp;" + actualSymbol;
         actualCard.style.color = actualColor;
-
-        console.log(deck.length);
         
         //Grab Card
         deck.splice(rnd, 1);
@@ -111,11 +126,26 @@ document.addEventListener("DOMContentLoaded", function () {
         //Verify if deck is empty
         isDeckEmpty();
 
-        return actualValue;
+        return actualLetter;
     }
 
-    function check(choose){
-        console.log("checking" + choose);
+    function checkCard(choose, lastValue){
+        if (choose === "up"){
+            if (actualValue > lastValue){
+                return true
+            } else if (actualValue < lastValue){
+                return false
+            } 
+            return false
+        } 
+        if(choose === "down") {
+            if (actualValue < lastValue){
+                return true
+            } else if (actualValue > lastValue){
+                return false
+            } 
+            return false
+        }
     }
 
     function isDeckEmpty(){
@@ -126,6 +156,34 @@ document.addEventListener("DOMContentLoaded", function () {
             btnDown.style.display = "none";
             console.log("Deck Ended");
         }
+    }
+
+    function drinkMessage(){
+        if (!checked) {
+            message(`You drink ${accumulatedCards} drinks`);
+            
+            accumulatedCards = 0;
+            firstPlayerCount = 0;
+            firstPlayer = true;
+        }
+
+        if (firstPlayer){
+            if(firstPlayerCount == 3){
+                message("You can Change Player!") ;
+                firstPlayerCount = 0;
+                firstPlayer = false;
+            }
+        } else {
+            if(firstPlayerCount == 1){
+                message("You can Change Player!");
+                firstPlayerCount = 0;
+                firstPlayer = false;
+            }
+        }
+    }
+
+    function message(msg){
+        divDrinkMessages.innerHTML = msg  ;
     }
 
 });
