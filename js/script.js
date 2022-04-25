@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function drinkMessage(){
         if (!checked) {
-            message(`You drink ${accumulatedCards} drinks`);
+            message(`Bebes ${accumulatedCards} tragos`);
             
             accumulatedCards = 0;
             firstPlayerCount = 0;
@@ -166,13 +166,13 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (firstPlayer){
             if(firstPlayerCount == 3){
-                message("You can Change Player!") ;
+                message("Ya puedes cambiar de Jugador!") ;
                 firstPlayerCount = 0;
                 firstPlayer = false;
             }
         } else {
             if(firstPlayerCount == 1){
-                message("You can Change Player!");
+                message("Puedes Cambiar de Jugador!");
                 firstPlayerCount = 0;
                 firstPlayer = false;
             }
