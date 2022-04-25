@@ -36,7 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
             }); 
         }); 
         sectionPlayGround.style.display = "none";
-        console.log("Deck Shuffled");
     }
 
     //Start (BeginButton)
@@ -80,7 +79,6 @@ document.addEventListener("DOMContentLoaded", function () {
         divAccumulatedCards.innerHTML = accumulatedCards;
 
         firstPlayerCount += 1;
-        console.log(firstPlayerCount);
                     
         //Random
         rnd = Math.ceil(Math.random() * (max - min) + min) - 1;
@@ -110,11 +108,11 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         //Actual Color
-        if (actualSymbol === "spade" || actualSymbol === "club"){
+        if (actualSymbol == "spade" || actualSymbol == "club"){
             actualColor = "#111";
-        } else {
+        } else if (actualSymbol == "heart" || actualSymbol == "diamond"){
             actualColor = "Red";
-        }
+        } 
 
         //Llena div de carta Actual
         actualCard.innerHTML = actualLetter + "&nbsp;" + actualSymbol;
@@ -154,7 +152,6 @@ document.addEventListener("DOMContentLoaded", function () {
             btnStart.innerHTML = "Shuffle";
             btnUp.style.display = "none";
             btnDown.style.display = "none";
-            console.log("Deck Ended");
         }
     }
 
