@@ -183,7 +183,13 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function message(msg){
-        divDrinkMessages.innerHTML = msg  ;
+        divDrinkMessages.innerHTML = " ";
+        divDrinkMessages.classList.addClass = "blink" ;
+        setTimeout( () => {
+            divDrinkMessages.innerHTML = msg ;
+            divDrinkMessages.classList.removeClass = "blink" ;
+        }, 200);
+        
     }
 
 });

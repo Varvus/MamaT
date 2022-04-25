@@ -1,3 +1,27 @@
 #up, #down {
     cursor:pointer;
 }
+
+#actualCard {
+    width:240px;
+    height:400px;
+}
+
+#up, #down {
+    transform:scale(3);
+    transition:.2s all ease;
+}
+#up:hover, #down:hover {
+    transform:scale(3.4);
+}
+
+ #drinkMessages  {
+    opacity:1;
+    color:black;
+    transition:all .2s ease;
+}    
+#drinkMessages.blink {
+    color:red;
+    opacity:.8;
+    transform:scale(2);
+}
