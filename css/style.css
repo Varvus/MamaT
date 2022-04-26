@@ -1,10 +1,18 @@
+body {
+    background: url("/img/bg.jpg");
+    background-size:cover;
+}
+
 #up, #down {
     cursor:pointer;
+    color:#F6C101;
 }
 
 #actualCard {
     width:240px;
     height:360px;
+    background: url("/img/card texture.jpg");
+    background-size:15px 15px;
 }
 
 #up, #down {
