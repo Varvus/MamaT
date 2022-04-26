@@ -30,7 +30,7 @@ body {
 
  #drinkMessages  {
     opacity:1;
-    color:black;
+    color:#111;
     transition:all .2s ease;
 }    
 #drinkMessages.blink {

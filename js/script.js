@@ -77,12 +77,12 @@ document.addEventListener("DOMContentLoaded", function () {
         let actualSymbol;
         let actualColor;
 
-        var audio = new Audio('../sound/deal card.ogg');
+        var audio = new Audio('/sound/deal card.ogg');
         audio.play();
 
         //Accumulated Cards Counter
         accumulatedCards += 1;
-        divAccumulatedCards.innerHTML = accumulatedCards;
+        divAccumulatedCards.innerHTML = "Acumuladas " + accumulatedCards;
 
         firstPlayerCount += 1;
                     
