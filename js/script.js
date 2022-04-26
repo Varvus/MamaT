@@ -46,7 +46,10 @@ document.addEventListener("DOMContentLoaded", function () {
         btnUp.style.display = "block";
         btnDown.style.display = "block";
         flipCard(); 
-        firstPlayer      = true;
+        firstPlayer = true;
+
+        var audio = new Audio('/sound/shuffle.wav');
+        audio.play();
     }
 
     //Up
@@ -73,6 +76,9 @@ document.addEventListener("DOMContentLoaded", function () {
         
         let actualSymbol;
         let actualColor;
+
+        var audio = new Audio('/sound/deal card.ogg');
+        audio.play();
 
         //Accumulated Cards Counter
         accumulatedCards += 1;
@@ -183,7 +189,7 @@ document.addEventListener("DOMContentLoaded", function () {
         divDrinkMessages.innerHTML = " ";
         divDrinkMessages.classList.addClass = "blink" ;
         setTimeout( () => {
-            divDrinkMessages.innerHTML = '' + msg + '';
+            divDrinkMessages.innerHTML = msg ;
             divDrinkMessages.classList.removeClass = "blink" ;
         }, 200);
         
