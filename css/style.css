@@ -1,5 +1,5 @@
 body {
-    background: url("/img/bg.jpg");
+    background: url("../img/bg.jpg");
     background-size:cover;
 }
 
@@ -11,7 +11,7 @@ body {
 #actualCard {
     width:240px;
     height:360px;
-    background: url("/img/card texture.jpg");
+    background: url("../img/card texture.jpg");
     background-size:15px 15px;
 }
 
