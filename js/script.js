@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
         flipCard(); 
         firstPlayer = true;
 
-        var audio = new Audio('/sound/shuffle.wav');
+        var audio = new Audio('../sound/shuffle.wav');
         audio.play();
     }
 
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
         let actualSymbol;
         let actualColor;
 
-        var audio = new Audio('/sound/deal card.ogg');
+        var audio = new Audio('../sound/deal card.ogg');
         audio.play();
 
         //Accumulated Cards Counter

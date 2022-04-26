@@ -1,5 +1,5 @@
 body {
-    background: url("/img/bg.jpg");
+    background: url("../img/bg.jpg");
     background-size:cover;
 }
 
@@ -11,7 +11,7 @@ body {
 #actualCard {
     width:240px;
     height:360px;
-    background: url("/img/card texture.jpg");
+    background: url("../img/card texture.jpg");
     background-size:5px 5px;
     /*background: rgb(250,250,252);
     background: -moz-linear-gradient(140deg, rgba(250,250,252,1) 3%, rgba(202,213,214,1) 98%);
